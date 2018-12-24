@@ -15,7 +15,7 @@ module.exports = function(app) {
         const headline = $(element).find("h3").text();
         const description = $(element).find("p").text();
         const articleLink = $(element).find("a").attr('href');
-        const imgLink = $(element).find("img").attr('src');
+        const imgLink = $(element).find("img").attr('org-src');
         const article = {
           headline: headline.replace(/[\n\t]/g,""), // uses regex to trim \t and \n characters
           description: description,

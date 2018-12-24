@@ -1,0 +1,21 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h2>{{headline}}</h2>
+        <ul class="collection">
+          {{#each comments}}
+            {{> comment-block}}
+          {{/each}}
+        </ul>
+        <input placeholder="Enter your name..." id="user" type="text">
+        <label for="user">Your Name</label>
+        <input placeholder="Enter your comment here..." id="newComment" type="text">
+        <label for="newComment">Comment</label>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitComment">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
