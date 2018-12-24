@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    default: "anonymous"
   },
   comment: {
     type: String,
@@ -14,7 +15,8 @@ const CommentSchema = new Schema({
   },
   timestamp: {
     type: Date,
-    required: true
+    required: true,
+    default: Date.now()
   },
   story: {
     type: Schema.Types.ObjectId,
