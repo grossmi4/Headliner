@@ -25,3 +25,8 @@ mongoose.connect("mongodb://localhost/Headliner", { useNewUrlParser: true } );
 
 //Routes
 require("./controllers/scraperController")(app);
+
+//Start the server
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
+});
