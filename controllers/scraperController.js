@@ -29,15 +29,17 @@ module.exports = function(app) {
 
           });
 
-        //TODO Need to prevent duplicates from writing to DB
-
-
       });
-      db.Article.find({}).limit(10)
-        .then(function(dbArticle) {
-          res.render("index", { articles: dbArticle } )
-        })
     })
+      .then(
+        db.Article.find({}).limit(10)
+          .then(function(dbArticle) {
+            res.render("index", { articles: dbArticle } )
+          })
+      )
+      .catch(err => {
+        console.log(err)
+      })
   });
 
 };
