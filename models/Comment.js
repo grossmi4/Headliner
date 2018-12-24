@@ -14,6 +14,10 @@ const CommentSchema = new Schema({
   timestamp: {
     type: Date,
     required: true
+  },
+  story: {
+    type: Schema.Types.ObjectId,
+    ref: 'Article'
   }
 });
 

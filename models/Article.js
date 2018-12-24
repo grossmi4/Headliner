@@ -17,8 +17,13 @@ const ArticleSchema = new Schema({
   },
   imgLink: {
     type: String
-  }
-  //TODO add reference to comment array
+  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: Comment
+    }
+  ]
 });
 
 const Article = mongoose.model("Article", ArticleSchema);
