@@ -23,4 +23,5 @@ const db = require("./models");
 //Connect mongoose to mongodb
 mongoose.connect("mongodb://localhost/Headliner", { useNewUrlParser: true } );
 
-
+//Routes
+require("./controllers/scraperController")(app);
