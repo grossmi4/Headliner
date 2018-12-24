@@ -1,13 +1,17 @@
 <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h2>The Headliner</h2>
-        <ul class="collection">
-          {{#each articles}}
-            {{> article-block}}
-          {{/each}}
-        </ul>
+  <div class="heading-wrapper">
+    <a href="/" class="white-link"><h2>THE HEADLINER</h2></a>
+  </div>
+  <div class="body-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 offset-2">
+          <ul class="collection">
+            {{#each articles}}
+              {{> article-block}}
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>

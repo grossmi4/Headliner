@@ -27,12 +27,15 @@ module.exports = function(app) {
         db.Article.create(article)
           .then(function(dbArticle) {
 
+          })
+          .catch(err => {
+            console.log(err);
           });
 
       });
     })
       .then(
-        db.Article.find({}).limit(10)
+        db.Article.find({}).limit(10).sort({ dateRetrieved: -1 })
           .then(function(dbArticle) {
             res.render("index", { articles: dbArticle } )
           })
