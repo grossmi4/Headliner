@@ -1,8 +1,7 @@
 const express = require("express"); //used for routing and middleware definitions
 const exphbs = require("express-handlebars"); //templating engine for express
 const mongoose = require("mongoose"); //used for interactive with mongodb
-const axios = require("axios"); //used to make get requests for scraping
-const cheerio = require("cheerio"); //used to parse html from scraping requests
+var bodyParser = require("body-parser");
 
 //set port
 const PORT = process.env.PORT || 3000;
@@ -12,6 +11,7 @@ const app = express();
 //Defining middleware
 
 app.use(express.static("public")); //set public directory for static files
+app.use(bodyParser.urlencoded({ extended: true}));
 
 //Set Handlebars
 app.engine("handlebars", exphbs({ defaulyLayout: "main" }));

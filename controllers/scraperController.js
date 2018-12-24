@@ -12,8 +12,17 @@ module.exports = function(app) {
 
       //grabs the first article tags with class 'story'
       $("article.story").each(function(i, element) {
+        const headline = $(element).find("h3").text();
         const description = $(element).find("p").text();
-        console.log(description);
+        const articleLink = $(element).find("a").attr('href');
+        const imgLink = $(element).find("img").attr('src');
+        const article = {
+          headline: headline.replace(/[\n\t]/g,""), // uses regex to trim \t and \n characters
+          description: description,
+          articleLink: "www.reuters.com/" + articleLink,
+          imgLink: imgLink
+        };
+        console.log(article);
       })
     })
   });
