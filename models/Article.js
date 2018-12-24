@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 const ArticleSchema = new Schema({
   headline: {
@@ -19,4 +19,8 @@ const ArticleSchema = new Schema({
     type: String
   }
   //TODO add reference to comment array
-})
+});
+
+const Article = mongoose.model("Article", ArticleSchema);
+
+module.exports = Article;

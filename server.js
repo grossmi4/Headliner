@@ -18,7 +18,7 @@ app.engine("handlebars", exphbs({ defaulyLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Require all models
-const db = require("./models");
+var db = require("./models");
 
 //Connect mongoose to mongodb
 mongoose.connect("mongodb://localhost/Headliner", { useNewUrlParser: true } );
