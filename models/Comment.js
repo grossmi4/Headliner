@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Article = require("./Article");
 
 const Schema = mongoose.Schema;
 
@@ -17,10 +16,6 @@ const CommentSchema = new Schema({
     type: Date,
     required: true,
     default: Date.now()
-  },
-  story: {
-    type: Schema.Types.ObjectId,
-    ref: 'Article'
   }
 });
 

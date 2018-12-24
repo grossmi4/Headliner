@@ -35,7 +35,6 @@ module.exports = function(app) {
       });
       db.Article.find({}).limit(10)
         .then(function(dbArticle) {
-          console.log(dbArticle);
           res.render("index", { articles: dbArticle } )
         })
     })
