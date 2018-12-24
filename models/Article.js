@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Comment = require("./Comment");
 
 const Schema = mongoose.Schema;
 
@@ -13,6 +14,11 @@ const ArticleSchema = new Schema({
   },
   dateRetrieved: {
     type: Date,
+    required: true,
+    default: Date.now()
+  },
+  articleLink: {
+    type: String,
     required: true
   },
   imgLink: {
