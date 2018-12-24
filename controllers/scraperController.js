@@ -1,4 +1,4 @@
-// const db = require("../models"); //get models for db
+const db = require("../models"); //get models for db
 const axios = require("axios"); //used to make get requests for scraping
 const cheerio = require("cheerio"); //used to parse html from scraping requests
 
@@ -19,12 +19,26 @@ module.exports = function(app) {
         const article = {
           headline: headline.replace(/[\n\t]/g,""), // uses regex to trim \t and \n characters
           description: description,
-          articleLink: "www.reuters.com/" + articleLink,
+          articleLink: "https://www.reuters.com" + articleLink,
           imgLink: imgLink
         };
-        console.log(article);
-      })
+
+        // Create new article in the database
+        db.Article.create(article)
+          .then(function(dbArticle) {
+
+          });
+
+        //TODO Need to prevent duplicates from writing to DB
+
+
+      });
+      db.Article.find({}).limit(10)
+        .then(function(dbArticle) {
+          console.log(dbArticle);
+          res.render("index", { articles: dbArticle } )
+        })
     })
   });
 
-}
+};
