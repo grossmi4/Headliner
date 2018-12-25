@@ -12,10 +12,13 @@ module.exports = function(app) {
 
       //grabs the first article tags with class 'story'
       $("article.story").each(function(i, element) {
+        // grabs data and stores into variables
         const headline = $(element).find("h3").text();
         const description = $(element).find("p").text();
         const articleLink = $(element).find("a").attr('href');
         const imgLink = $(element).find("img").attr('org-src');
+
+        // create article variable for use in create statement to mongodb
         const article = {
           headline: headline.replace(/[\n\t]/g,""), // uses regex to trim \t and \n characters
           description: description,
@@ -34,6 +37,7 @@ module.exports = function(app) {
 
       });
     })
+    // Refresh the articles on the page, limited to top 10 sorted by most recent.
       .then(
         db.Article.find({}).limit(10).sort({ dateRetrieved: -1 })
           .then(function(dbArticle) {
