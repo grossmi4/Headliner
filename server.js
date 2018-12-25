@@ -2,6 +2,9 @@ const express = require("express"); //used for routing and middleware definition
 const exphbs = require("express-handlebars"); //templating engine for express
 const mongoose = require("mongoose"); //used for interactive with mongodb
 const bodyParser = require("body-parser"); //not sure if actually needed but i was troubleshooting
+const passport = require("passport"); //used for authentication
+const session = require("express-session"); //used to store authentication session
+const RedisStore = require("connect-redis");
 
 //set port
 const PORT = process.env.PORT || 3000;
@@ -13,6 +16,21 @@ const app = express();
 
 app.use(express.static("public")); //set public directory for static files
 app.use(bodyParser.urlencoded({ extended: true})); //again, don't know if needed
+
+//Redis middleware config
+app.use(session({
+  store: new RedisStore ({
+    url: config.redisStore.url
+  }),
+  secret: config.redisStore.secret,
+  resave: false,
+  saveUnititialized: false
+}));
+
+//Passport middleware config
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
